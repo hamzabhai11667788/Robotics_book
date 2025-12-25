@@ -1,0 +1,125 @@
+# Documentation API Contract
+
+## Overview
+This contract defines the API endpoints for the ROS 2 for Humanoid Robotics documentation system. While primarily a static documentation site, these endpoints support interactive features like search, assessment tracking, and user feedback.
+
+## Base URL
+```
+https://robotics-book.example.com/api/v1
+```
+
+## Endpoints
+
+### 1. Search Documentation
+**Endpoint**: `GET /search`
+**Description**: Search through the ROS 2 documentation content
+**Parameters**:
+- `q` (string, required): Search query
+- `limit` (integer, optional): Number of results to return (default: 10, max: 50)
+- `category` (string, optional): Filter by category (e.g., "intro-ros2", "communication", "urdf")
+
+**Response**:
+```json
+{
+  "results": [
+    {
+      "id": "string",
+      "title": "string",
+      "content_snippet": "string",
+      "url": "string",
+      "category": "string",
+      "relevance_score": "number"
+    }
+  ],
+  "total_results": "number",
+  "query_time_ms": "number"
+}
+```
+
+### 2. Submit Assessment Answer
+**Endpoint**: `POST /assessments/{assessmentId}/submit`
+**Description**: Submit an answer for an assessment question
+**Path Parameters**:
+- `assessmentId` (string): Unique identifier for the assessment
+
+**Request Body**:
+```json
+{
+  "question_id": "string",
+  "answer": "string",
+  "user_id": "string" (optional for anonymous)
+}
+```
+
+**Response**:
+```json
+{
+  "question_id": "string",
+  "is_correct": "boolean",
+  "explanation": "string",
+  "next_recommendation": "string" (optional)
+}
+```
+
+### 3. Track User Progress
+**Endpoint**: `POST /progress/track`
+**Description**: Track user progress through the documentation modules
+**Request Body**:
+```json
+{
+  "user_id": "string" (optional for anonymous),
+  "module_id": "string",
+  "chapter_id": "string",
+  "completed": "boolean",
+  "time_spent_seconds": "number"
+}
+```
+
+**Response**:
+```json
+{
+  "status": "success",
+  "progress_percentage": "number"
+}
+```
+
+### 4. Submit Feedback
+**Endpoint**: `POST /feedback`
+**Description**: Submit feedback on documentation content
+**Request Body**:
+```json
+{
+  "user_id": "string" (optional),
+  "page_url": "string",
+  "feedback_type": "enum: [bug, suggestion, praise, other]",
+  "content": "string",
+  "rating": "number" (optional, 1-5)
+}
+```
+
+**Response**:
+```json
+{
+  "status": "success",
+  "feedback_id": "string"
+}
+```
+
+## Error Responses
+All endpoints follow the same error response format:
+```json
+{
+  "error": {
+    "code": "string",
+    "message": "string",
+    "details": "object" (optional)
+  }
+}
+```
+
+## Common Error Codes
+- `400`: Bad Request - Invalid request parameters
+- `401`: Unauthorized - Authentication required
+- `404`: Not Found - Requested resource doesn't exist
+- `429`: Too Many Requests - Rate limit exceeded
+- `500`: Internal Server Error - Unexpected server error

@@ -22,8 +22,6 @@ if ($Help) {
 
 # Get all paths and variables from common functions
 $paths = Get-FeaturePathsEnv
-Write-Output "DEBUG: REPO_ROOT = $($paths.REPO_ROOT)"
-Write-Output "DEBUG: CURRENT_BRANCH = $($paths.CURRENT_BRANCH)"
 
 # Check if we're on a proper feature branch (only for git repos)
 if (-not (Test-FeatureBranch -Branch $paths.CURRENT_BRANCH -HasGit $paths.HAS_GIT)) { 
@@ -61,4 +59,3 @@ if ($Json) {
     Write-Output "BRANCH: $($paths.CURRENT_BRANCH)"
     Write-Output "HAS_GIT: $($paths.HAS_GIT)"
 }
-

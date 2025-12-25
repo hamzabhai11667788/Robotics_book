@@ -31,11 +31,7 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-- [ ] **Spec-Driven Development**: Does a complete `spec.md` exist for this feature?
-- [ ] **Test-Driven Development**: Are test scenarios included in the `spec.md` and `tasks.md`?
-- [ ] **Clear API Contracts**: If this feature involves APIs, are the contracts defined in `contracts/`?
-- [ ] **Stateless Services**: If building services, is a plan in place to manage state externally?
-- [ ] **Secure by Design**: Have security considerations (auth, data validation) been addressed in the spec?
+[Gates determined based on constitution file]
 
 ## Project Structure
 

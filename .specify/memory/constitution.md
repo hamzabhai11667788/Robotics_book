@@ -1,43 +1,56 @@
-<!--
-Sync Impact Report:
-- Version change: None -> 1.0.0
-- Added sections:
-  - Principles: Spec-Driven Development, Test-Driven Development, Small, Atomic Commits, Clear API Contracts, Stateless Services, Secure by Design
-  - Development Workflow
-  - Governance
-- Removed sections: None
-- Templates requiring updates:
-  - ✅ .specify/templates/plan-template.md
-- Follow-up TODOs: None
+<!-- SYNC IMPACT REPORT:
+     Version change: N/A -> 1.0.0
+     Modified principles: N/A (new constitution)
+     Added sections: All sections (Core Principles, Additional Standards, Constraints, Success Criteria, Governance)
+     Removed sections: None
+     Templates requiring updates: ✅ plan-template.md, ✅ spec-template.md, ✅ tasks-template.md (no changes needed - templates are generic)
+     Follow-up TODOs: None
 -->
-# Gemini CLI Agent Project Constitution
+
+# AI/Spec-Driven Book with Embedded RAG Chatbot Constitution
 
 ## Core Principles
 
-### I. Spec-Driven Development
-All features, enhancements, or bug fixes must begin with a clear, written specification document. The specification must define the user stories, requirements, and success criteria before any implementation begins.
+### Spec-first workflow using Spec-Kit Plus
+All development begins with a specification. Features are designed and documented before implementation. This ensures clear requirements, testable outcomes, and reproducible results.
 
-### II. Test-Driven Development (NON-NEGOTIABLE)
-All code must be developed following a strict Red-Green-Refactor cycle. A failing test must be written to reproduce a bug or define a new feature before the corresponding implementation is written. All tests must pass before code is submitted for review.
+### Technical accuracy from official sources
+All content and implementations must be grounded in official documentation and verified sources. No assumptions or speculative implementations are allowed without clear documentation references.
 
-### III. Small, Atomic Commits
-Code contributions must be made in small, logical, atomic commits. Each commit must represent a single, complete thought and must pass all automated checks. This facilitates easier code review and safer rollbacks.
+### Clear, developer-focused writing
+Documentation and code must prioritize clarity for developers. Complex concepts should be broken down into digestible, actionable information with practical examples.
 
-### IV. Clear API Contracts
-All services and components must communicate through well-defined, versioned, and documented API contracts. Any change to a contract requires a version bump and a clear migration plan.
+### Reproducible setup and deployment
+All processes must be completely reproducible. Installation, configuration, and deployment procedures must be documented and verified across different environments.
 
-### V. Stateless Services
-Services should be designed to be stateless whenever possible. State should be externalized to a dedicated persistence layer (e.g., database, cache), allowing services to be scaled, restarted, and load-balanced without loss of context.
+## Additional Standards
 
-### VI. Secure by Design
-Security is not an afterthought. It must be a primary consideration at every stage of the development lifecycle, from specification to deployment. All code must adhere to best practices for authentication, authorization, data validation, and secrets management.
+Book written with Docusaurus and deployed on GitHub Pages: The primary documentation will be built using Docusaurus and hosted on GitHub Pages for easy access and maintenance.
 
-## Development Workflow
+RAG chatbot grounded only in book content or user-selected text: The chatbot must only reference content from the book or text specifically provided by users, ensuring accuracy and preventing hallucinations.
 
-All development must follow the established git branching model and pull request process. Code reviews are mandatory for all changes, and must be conducted by at least one other team member.
+Stack: OpenAI Agents/ChatKit, FastAPI, Neon Postgres, Qdrant Cloud: The technology stack is standardized to ensure consistency and maintainability.
+
+Runnable, well-documented code: All code examples must be functional and thoroughly documented to enable easy understanding and implementation.
+
+## Constraints
+
+GitHub-based source control: All code and documentation must be managed through GitHub with proper branching and review processes.
+
+No hallucinated responses: The system must not generate content that is not grounded in the provided documentation or user inputs.
+
+End-to-end reproducibility: The entire system from setup to deployment must be reproducible by any developer following the documentation.
+
+## Success Criteria
+
+Live book on GitHub Pages: The documentation must be successfully deployed and accessible via GitHub Pages.
+
+Fully functional embedded RAG chatbot: The chatbot must correctly respond to queries based on the book content.
+
+All specs implemented via Spec-Kit Plus: The entire project must follow the Spec-Kit Plus methodology for consistency.
 
 ## Governance
 
-This Constitution is the source of truth for all development practices. Any proposed amendment must be documented in a pull request, reviewed, and approved by the project maintainers. All pull requests must verify compliance with the principles outlined in this document.
+This constitution governs all development activities for the AI/Spec-Driven Book with Embedded RAG Chatbot project. All contributors must adhere to these principles. Amendments require documentation and approval from project maintainers. All pull requests and code reviews must verify compliance with these principles.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
+**Version**: 1.0.0 | **Ratified**: 2025-06-13 | **Last Amended**: 2025-12-23

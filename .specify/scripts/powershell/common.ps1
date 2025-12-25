@@ -2,28 +2,17 @@
 # Common PowerShell functions analogous to common.sh
 
 function Get-RepoRoot {
-    # Determine the project root based on the script's location.
-    # This assumes common.ps1 is in .specify/scripts/powershell/ relative to the project root.
-    $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot "../../..")).Path
-
     try {
-        $gitRepoRoot = git rev-parse --show-toplevel 2>$null
+        $result = git rev-parse --show-toplevel 2>$null
         if ($LASTEXITCODE -eq 0) {
-            # Check if the calculated projectRoot is within the gitRepoRoot
-            if ($projectRoot.StartsWith($gitRepoRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
-                # If projectRoot is a sub-directory of gitRepoRoot, use projectRoot as the effective repo root
-                return $projectRoot
-            } else {
-                # Otherwise, use the git-determined repo root
-                return $gitRepoRoot
-            }
+            return $result
         }
     } catch {
-        # Git command failed, fall through to default projectRoot
+        # Git command failed
     }
     
-    # Fall back to script location based project root (for non-git repos or when git command fails/is misconfigured)
-    return $projectRoot
+    # Fall back to script location for non-git repos
+    return (Resolve-Path (Join-Path $PSScriptRoot "../../..")).Path
 }
 
 function Get-CurrentBranch {
