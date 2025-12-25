@@ -1,0 +1,62 @@
+.assessmentContainer {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+}
+
+.question {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.options li {
+  margin: 8px 0;
+}
+
+.options input[type="radio"] {
+  margin-right: 8px;
+}
+
+.feedback {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.correct {
+  color: #28a745;
+}
+
+.incorrect {
+  color: #dc3545;
+}
+
+.submitButton {
+  background-color: #007cba;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #005a87;
+}
+
+.score {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  font-weight: bold;
+  font-size: 18px;
+}
